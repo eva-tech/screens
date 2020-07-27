@@ -1,0 +1,32 @@
+<html>
+  <meta charset="utf-8" />
+  <body>
+    <video id="idle_video" width="100%" onended="onVideoEnded();">
+      Your browser does not support the video tag.
+    </video>
+    <script>
+      const video_list = ["center.webm", "pechos.webm"];
+      let video_index = 0;
+      let video_player = null;
+
+      window.onload = () => {
+        console.log("body loaded");
+        video_player = document.getElementById("idle_video");
+        video_player.muted = true;
+        video_player.setAttribute("src", video_list[video_index]);
+        video_player.play();
+      };
+
+      function onVideoEnded() {
+        console.log("video ended");
+        if (video_index < video_list.length - 1) {
+          video_index++;
+        } else {
+          video_index = 0;
+        }
+        video_player.setAttribute("src", video_list[video_index]);
+        video_player.play();
+      }
+    </script>
+  </body>
+</html>
